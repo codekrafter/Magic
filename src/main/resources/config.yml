@@ -1,0 +1,10 @@
+#########################################################################
+#                           Magic                                       #
+#                     by Codekrafter                                    #
+#                                                                       #
+#                    Main Config File                                   #
+#                                                                       #
+#    Remember, if You Don't Know What It Does, Don't Touch It :)        #
+#########################################################################
+wand:
+    type: STICK
