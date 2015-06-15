@@ -1,0 +1,8 @@
+name: Magic
+main: net.codekrafter.plugins.magic.Magic
+version: 0.0.1
+softdepend: [ProtocolLib]
+commands:
+    magic:
+          description: The Base Magic Command
+          usage: /magic <subcommands>
