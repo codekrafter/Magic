@@ -56,7 +56,7 @@ public class MagicListener implements Listener
 			}
 		}
 		else if (e.getAction() == Action.LEFT_CLICK_BLOCK
-				|| e.getAction() == Action.LEFT_CLICK_AIR)
+				|| e.getAction() == Action.LEFT_CLICK_AIR && e.getPlayer().getItemInHand().getType() == Magic.wand)
 		{
 			for (Spell s : Magic.spells)
 			{
