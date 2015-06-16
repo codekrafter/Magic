@@ -7,9 +7,9 @@ import org.bukkit.inventory.ItemStack;
 public interface Spell
 {
 
-	public double onRightClick(Player p);
+	public int onRightClick(Player p);
 
-	public double onLeftClick(Player p);
+	public int onLeftClick(Player p);
 
 	public String getName();
 

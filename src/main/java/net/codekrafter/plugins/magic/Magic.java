@@ -25,7 +25,7 @@ public class Magic extends JavaPlugin
 	public File spellDir = new File(getDataFolder(), "spells");
 	public File spellListing = new File(getDataFolder(), "spells/spells.yml");
 	public static Map<Player, Spell> currentSpells = new HashMap<Player, Spell>();
-	public static Map<Player, Double> mana = new HashMap<Player, Double>();
+	public static Map<Player, Integer> mana = new HashMap<Player, Integer>();
 
 	@Override
 	public void onEnable()

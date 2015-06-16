@@ -2,6 +2,7 @@
 package net.codekrafter.plugins.magic.tasks;
 
 import net.codekrafter.plugins.magic.Magic;
+import net.codekrafter.plugins.utils.ExperienceManager;
 
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
@@ -16,15 +17,13 @@ public class ManaRegenTask extends BukkitRunnable
 		{
 			if (Magic.mana.get(p) == null)
 			{
-				Magic.mana.put(p, 0D);
+				Magic.mana.put(p, 0);
 			}
 			else
 			{
 				loopFunction(p);
 			}
 			Float xp = Float.valueOf(String.valueOf(Magic.mana.get(p)));
-			p.setExp(xp);
-			p.sendMessage("hey, your mana is: " + Magic.mana.get(p));
 		}
 
 	}
@@ -45,6 +44,9 @@ public class ManaRegenTask extends BukkitRunnable
 				loopFunction(p);
 			}
 		}
+		ExperienceManager xpman = new ExperienceManager(p);
+		int xpforlvl = xpman.getXpForLevel(Magic.mana.get(p));
+		xpman.setExp(xpforlvl);
 	}
 
 }

@@ -16,7 +16,7 @@ import org.bukkit.inventory.meta.ItemMeta;
 public class FireballSpell implements Spell
 {
 
-	public double onRightClick(Player p)
+	public int onRightClick(Player p)
 	{
 		if (p != null)
 		{
@@ -24,11 +24,11 @@ public class FireballSpell implements Spell
 			fb.setIsIncendiary(false);
 			
 		}
-		return 20D;
+		return 20;
 
 	}
 
-	public double onLeftClick(Player p)
+	public int onLeftClick(Player p)
 	{
 		if (p != null)
 		{
@@ -36,7 +36,7 @@ public class FireballSpell implements Spell
 			p.playEffect(p.getLocation(), Effect.MOBSPAWNER_FLAMES, 2002);
 			p.playSound(p.getLocation(), Sound.BLAZE_BREATH, 10, 10);
 		}
-		return 5D;
+		return 5;
 	}
 
 	public String getName()
