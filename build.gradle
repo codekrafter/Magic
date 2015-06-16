@@ -57,6 +57,11 @@ repositories {
     	name = "shadowvolt-repo"
     	url = "http://ci.shadowvolt.com/plugin/repository/everything/"
     }
+	
+	maven {
+		name = "hawkfalcon-repo"
+		url = "http://ci.hawkfalcon.com/plugin/repository/everything"
+	}
 }
 
 dependencies {
@@ -66,6 +71,7 @@ dependencies {
     compile name: "snakeyaml", group: "org.yaml", version: "1.16-SNAPSHOT"
     compile name: "updater", group: "net.gravitydevelopment.updater", version: "2.1"
     compile name: "metrics", group: "org.mcstats.bukkit", version: "R8-SNAPSHOT"
+	//compile name: "dhutils-lib", group: "me.desht", version: "LATEST"
     //compile name: "ProtocolLib", group: "com.comphenix.protocol", version: "3.6.3-SNAPSHOT"
     testCompile group: 'junit', name: 'junit', version: '4.+'
 }
@@ -89,6 +95,7 @@ shadowJar {
 
     relocate 'org.mcstats', 'net.codekrafter.plugins.magic.mcstats'
     relocate 'net.gravitydevelopment.updater', 'net.codekrafter.plugins.magic.updater'
+	relocate 'me.desht.dhutils', 'net.codekrafter.plugins.magic.dhutils'
 
     exclude 'META-INF/*.DSA'
     exclude 'META-INF/*.RSA'

@@ -1,15 +1,23 @@
+
 package net.codekrafter.plugins.magic.api;
 
+import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
-
 
 public interface Spell
 {
-	public void onRightClick();
-	public void onLeftClick();
+
+	public double onRightClick(Player p);
+
+	public double onLeftClick(Player p);
+
 	public String getName();
+
 	public SpellType getType();
+
 	public ItemStack getIcon();
-	public void onShiftClick();
-	public void onSpellToggleClick(boolean b);
+
+	public void onShift(Player p);
+
+	public void onSpellToggle(boolean b, Player p);
 }
