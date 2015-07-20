@@ -13,7 +13,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
-public class FireballSpell implements Spell
+public class FireballSpell extends Spell
 {
 
 	public int onRightClick(Player p)
@@ -22,7 +22,7 @@ public class FireballSpell implements Spell
 		{
 			Fireball fb = p.launchProjectile(Fireball.class);
 			fb.setIsIncendiary(false);
-			
+
 		}
 		return 20;
 
@@ -59,11 +59,6 @@ public class FireballSpell implements Spell
 		return is;
 	}
 
-	public void onShift(Player p)
-	{
-
-	}
-
 	public void onSpellToggle(boolean b, Player p)
 	{
 		if (b)
@@ -85,5 +80,9 @@ public class FireballSpell implements Spell
 					+ "Spell!");
 		}
 	}
+
+	@Override
+	public void onSpellLoad()
+	{}
 
 }

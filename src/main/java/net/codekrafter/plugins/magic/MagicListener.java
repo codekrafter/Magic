@@ -38,7 +38,7 @@ public class MagicListener implements Listener
 		if (e.getAction() == Action.RIGHT_CLICK_BLOCK
 				|| e.getAction() == Action.RIGHT_CLICK_AIR)
 		{
-			if (e.getPlayer().getItemInHand().getType() == Magic.wand
+			if (e.getPlayer().getItemInHand().getType() == Magic.wandType
 					&& e.getPlayer().isSneaking())
 			{
 				Inventory inv = Bukkit.createInventory(e.getPlayer(), 9,
@@ -64,7 +64,7 @@ public class MagicListener implements Listener
 		}
 		else if (e.getAction() == Action.LEFT_CLICK_BLOCK
 				|| e.getAction() == Action.LEFT_CLICK_AIR
-				&& e.getPlayer().getItemInHand().getType() == Magic.wand)
+				&& e.getPlayer().getItemInHand().getType() == Magic.wandType)
 		{
 			for (Spell s : Magic.spells)
 			{
@@ -115,7 +115,7 @@ public class MagicListener implements Listener
 	@EventHandler
 	public void BlockBreak(BlockBreakEvent e)
 	{
-		if (e.getPlayer().getItemInHand().getType() == Magic.wand)
+		if (e.getPlayer().getItemInHand().getType() == Magic.wandType)
 		{
 			e.setCancelled(true);
 			renameItem(e.getPlayer());
@@ -128,7 +128,7 @@ public class MagicListener implements Listener
 	@EventHandler
 	public void BlockPlace(BlockPlaceEvent e)
 	{
-		if (e.getPlayer().getItemInHand().getType() == Magic.wand)
+		if (e.getPlayer().getItemInHand().getType() == Magic.wandType)
 		{
 			e.setCancelled(true);
 			renameItem(e.getPlayer());
@@ -137,7 +137,7 @@ public class MagicListener implements Listener
 
 	private void renameItem(Player p)
 	{
-		if (p.getItemInHand().getType() == Magic.wand)
+		if (p.getItemInHand().getType() == Magic.wandType)
 		{
 			ItemMeta meta = p.getItemInHand().getItemMeta();
 			meta.setDisplayName("" + ChatColor.DARK_PURPLE + ChatColor.BOLD
