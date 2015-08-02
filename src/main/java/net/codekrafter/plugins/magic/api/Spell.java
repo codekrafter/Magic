@@ -22,4 +22,8 @@ public abstract class Spell
 	public abstract void onSpellToggle(boolean b, Player p);
 	
 	public abstract void onSpellLoad();
+	
+	public SpellDescriptionFile descFile;
+	
+	public abstract SpellDescriptionFile getDescFile();
 }

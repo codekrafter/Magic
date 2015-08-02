@@ -6,10 +6,10 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 
 import net.codekrafter.plugins.magic.api.Spell;
 import net.codekrafter.plugins.magic.spellloading.SpellLoader;
-import net.codekrafter.plugins.magic.spells.FireballSpell;
 import net.codekrafter.plugins.magic.tasks.ManaRegenTask;
 import net.md_5.bungee.api.ChatColor;
 
@@ -41,8 +41,36 @@ public class Magic extends JavaPlugin
 				this);
 		Bukkit.getScheduler().runTaskTimer(this, new ManaRegenTask(), 0, 100);
 		manageFiles();
-		new SpellLoader(this, getServer().getPluginManager()).loadSpells(getClassLoader());
-		spells.add(new FireballSpell());
+		SpellLoader sl = new SpellLoader(this, getServer().getPluginManager());
+		sl.loadSpells(getClassLoader());
+		// spells.add(new FireballSpell());
+		getLogger().info("Loaded Spells:");
+		for (Spell s : spells)
+		{
+			getLogger().info(
+					s.getName() + " Version: " + s.getDescFile().getVersion());
+		}
+
+		for (Player p : Bukkit.getOnlinePlayers())
+		{
+			Spell spell = null;
+			if (getConfig().getString(
+					"spell.current." + p.getUniqueId().toString()) != null)
+			{
+				for (Spell s : spells)
+				{
+					if (s.descFile.getMain() == getConfig().getString(
+							"spell.current." + p.getUniqueId().toString()))
+					{
+						spell = s;
+					}
+				}
+			}
+			if (spell != null)
+			{
+				currentSpells.put(p, spell);
+			}
+		}
 	}
 
 	private void manageFiles()
@@ -57,6 +85,13 @@ public class Magic extends JavaPlugin
 	public void onDisable()
 	{
 		getConfig().set("wand.type", wandType.toString());
+		for (Entry<Player, Spell> entry : currentSpells.entrySet())
+		{
+			getConfig()
+					.set("spells.current."
+							+ entry.getKey().getUniqueId().toString(),
+							entry.getValue().descFile.getMain());
+		}
 	}
 
 }

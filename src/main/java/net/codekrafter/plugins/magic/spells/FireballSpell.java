@@ -2,6 +2,7 @@
 package net.codekrafter.plugins.magic.spells;
 
 import net.codekrafter.plugins.magic.api.Spell;
+import net.codekrafter.plugins.magic.api.SpellDescriptionFile;
 import net.codekrafter.plugins.magic.api.SpellType;
 import net.md_5.bungee.api.ChatColor;
 
@@ -84,5 +85,14 @@ public class FireballSpell extends Spell
 	@Override
 	public void onSpellLoad()
 	{}
+
+	/* (non-Javadoc)
+	 * @see net.codekrafter.plugins.magic.api.Spell#getDescFile()
+	 */
+	@Override
+	public SpellDescriptionFile getDescFile()
+	{
+		return this.descFile;
+	}
 
 }

@@ -93,7 +93,7 @@ public class SpellLoader
 			{
 				urls.put(f.toURI().toURL(), getSpellDescription(f).getMain());
 			}
-			Object[] urlsArrayObject = urls.values().toArray();
+			Object[] urlsArrayObject = urls.keySet().toArray();
 			URL[] urlsArray = new URL[urls.size()];
 			int i0 = 0;
 			for (Object o : urlsArrayObject)
@@ -127,7 +127,9 @@ public class SpellLoader
 					clazz = cl.loadClass(entry.getValue());
 					spellObject = (Spell) clazz.newInstance();
 					spellObject.onSpellLoad();
+					spellObject.descFile = getSpellDescription(new File(entry.getKey().getFile()));
 					Magic.spells.add(spellObject);
+					System.out.printf("[Magic] &s Spell Loaded", spellObject.getName().replaceAll("/Spell/ig", ""));
 				}
 				catch (ClassNotFoundException e)
 				{
@@ -138,6 +140,10 @@ public class SpellLoader
 					e.printStackTrace();
 				}
 				catch (IllegalAccessException e)
+				{
+					e.printStackTrace();
+				}
+				catch (InvalidDescriptionException e)
 				{
 					e.printStackTrace();
 				}
